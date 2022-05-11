@@ -6,19 +6,11 @@
 </head>
 
 <body>
-    <h1>这是表格助手的测试网页1</h1>
     <script>
-
-        var element ={"name":"wpsapp","addonType":"et","online":"true","multiUser":"true","url":"https://zhibiao.uicp.fun/"}
-        WpsAddonMgr.disable(element, function (result) {});
-        WpsAddonMgr.enable(element, function (result) {
-            if (result.status) {
-                console.log(result.msg)
-            } else {
-                console.log("安装成功")
-            }
-
-        })
+        var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://zhibiao.uicp.fun/wpsapp/" };
+        wpsClient = new WpsClient(WpsInvoke.ClientType.et);
+        wpsClient.jsPluginsXml = "https://zhibiao.uicp.fun/wpsapp/jsplugins.xml";
+        wpsClient.InvokeAsHttp("wpsapp","newWorkbook",JSON.stringify(null),() => {},false);
     </script>
 </body>
 
