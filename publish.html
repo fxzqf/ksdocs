@@ -267,14 +267,18 @@
             });
         }
 
-        var serverId = undefined;
-
         /**
-         * 开启多用户的接口
+         * 自定义协议启动服务端
+         * 默认不带参数serverId，linux未升级之前不要使用多用户
          */
-        // function EnableMultiUser() {
-        //     serverId = getServerId();
-        // }
+        function InitWpsCloudSvr() {
+            if (serverId == undefined)
+                window.location.href = "ksoWPSCloudSvr://start=RelayHttpServer"//是否启动wps弹框
+            else
+                window.location.href = "ksoWPSCloudSvr://start=RelayHttpServer" + "&serverId=" + serverId //是否启动wps弹框
+        }
+
+        var serverId = undefined;
 
         /**
          * 获取serverId的接口
@@ -311,7 +315,19 @@
                 //这俩配置，取一即可，不可同时启用
                 xmlReq.open(reqInner.type, reqInner.url);
                 xmlReq.onload = function (res) {
-                    bFinished = true;
+                    if (res.target.status != 200) {
+                        var responseStr = IEVersion() < 10 ? xmlReq.responseText : res.target.response;
+                        var errorMessage = JSON.parse(responseStr)
+                        if (errorMessage.data == "Subserver not available." && tryCount == 4 && bPop) {
+                            InitWpsCloudSvr();
+                            setTimeout(function () {
+                                if (bRetry) {
+                                    bRetry = false;
+                                    startWpsInnder(reqInner, --tryCount, false);
+                                }
+                            }, 3000);
+                        }
+                    }
                     if (callback)
                         callback({
                             status: 0,
@@ -321,10 +337,7 @@
                 xmlReq.ontimeout = xmlReq.onerror = function (res) {
                     xmlReq.bTimeout = true;
                     if (bPop) { //打开wps并传参
-                        if(serverId == undefined)
-                            window.location.href = "ksoWPSCloudSvr://start=RelayHttpServer"//是否启动wps弹框
-                        else
-                            window.location.href = "ksoWPSCloudSvr://start=RelayHttpServer" + "&serverId=" + serverId //是否启动wps弹框
+                        InitWpsCloudSvr()
                     }
                     setTimeout(function () {
                         if (bRetry) {
@@ -485,7 +498,8 @@
                     if (cmd === "disableall") {
                         window.location.reload();
                     } else {
-                        if(res.res.target.response == "OK" || res.res.target.response == ""){
+                        if (res.res.target.response == "OK"
+                            || (res.res.target.response == "" && res.res.target.status == 200)) {
                             var newCmd = 'disable';
                             if (cmd === 'disable')
                                 newCmd = 'enable';
@@ -533,7 +547,7 @@
 
         function LoadLocalAddons() {
             var baseData
-            if (serverVersion >= "1.0.2"  && serverId != undefined)
+            if (serverVersion >= "1.0.2" && serverId != undefined)
                 baseData = JSON.stringify({ serverId: serverId });
             var req = { url: "http://127.0.0.1:58890/publishlist", type: "POST" };
             startWps(req, baseData, function (res) {
@@ -553,7 +567,7 @@
 
         function LoadPublishAddons() {
             var addonList = document.getElementById("addonList");
-            var curList = [{"name":"wpsapp","addonType":"et","online":"true","url":"http://fxjy.vicp.net/wpsapp/"}];
+            var curList = [{"name":"EtOAAssist","addonType":"et","online":"false","multiUser":"false","url":"https://zhibiao.uicp.fun/wpsapp/EtOAAssist.7z","version":"1.0.0"}];
             curList.forEach(function (element) {
                 var param = JSON.stringify(element).replace("\"", "\'");
                 UpdateElement(element, 'enable')
