@@ -892,7 +892,7 @@
      */
     function GetUrlBase() {
         if (location.protocol == "https:")
-            return "https://127.0.0.1:58890";
+            return "http://127.0.0.1:58890";
         return "http://127.0.0.1:58890";
     }
 
