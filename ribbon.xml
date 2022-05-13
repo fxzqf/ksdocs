@@ -1,0 +1,11 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="OnAddinLoad">
+    <ribbon startFromScratch="false">
+        <tabs>
+            <tab idMso="TabView">
+				<group id="btnDemoGroup">
+                    <button id="btnShowTaskPane"  label="表格助手" getImage="GetImage" onAction="OnAction" getEnabled="OnGetEnabled" visible="true" size="large"/>
+				</group>
+            </tab>
+        </tabs>
+    </ribbon>
+</customUI>
