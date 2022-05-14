@@ -1,1 +1,22 @@
+<head>
+    <meta charset="utf-8">
+    <title>安装WPS表格助手加载项</title>
 
+
+    <script src="./js/wpsjsrpcsdk.js"></script>
+    
+</head>
+
+<body>
+    <script>
+        //var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://zhibiao.uicp.fun/wpsapp/" };
+     
+        wpsClient = new WpsClient(WpsInvoke.ClientType.et);
+        wpsClient.jsPluginsXml = "https://fxzqf.github.io/ksdocs/jsplugins.xml";
+        wpsClient.InvokeAsHttp("表格助手","newWorkbook",JSON.stringify(null),() => {},false);
+
+        
+    </script>
+</body>
+
+</html>
