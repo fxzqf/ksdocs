@@ -10,7 +10,6 @@
         let webShape = Application.ActiveSheet.Shapes.Item(1).WebShape;
         let ActiveTaskPane = null;
         webShape.Visible = false;
-        alert("Good");
         Application.ApiEvent.AddApiEventListener("WorkbookBeforeSave", function (workBook) {
             if (workBook.FullName == activeWorkbook.FullName) webShape.Visible = true
         });
