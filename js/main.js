@@ -148,8 +148,8 @@ window.onload = function () {
         wps.Enum = WPS_Enum; // 如果没有内置枚举值
     if (wps.Application)
         wps.Application = wps.EtApplication();
-    //wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
-    //wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
+    wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
+    wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
     wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
     wps.ApiEvent.AddApiEventListener("WorkbookOpen", onWorkbookOpen);
 };
