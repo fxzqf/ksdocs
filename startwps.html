@@ -14,12 +14,20 @@
     <script>
         //var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/ksdocs/" };
        
-        wpsClient = new WpsClient(WpsInvoke.ClientType.et);
-        wpsClient.jsPluginsXml = "https://fxzqf.github.io/ksdocs/jsplugins.xml";
-        wpsClient.InvokeAsHttp("wpsapp","newWorkbook",JSON.stringify(null),() => {},false);
+        //wpsClient = new WpsClient(WpsInvoke.ClientType.et);
+        //wpsClient.jsPluginsXml = "https://fxzqf.github.io/ksdocs/jsplugins.xml";
+        //wpsClient.InvokeAsHttp("wpsapp","newWorkbook",JSON.stringify(null),() => {},false);
         //window.opener=null;
         //window.open('','_self');
         //window.close(); 
+         window.onload=()=>{
+        WpsInvoke.InvokeAsHttp(
+        WpsInvoke.ClientType.et,
+        "wpsapp",
+        "newWorkBook",
+        JSON.stringify(null),() => {  }, true,"https://zhibiao.uicp.fun/jsplugins.xml",false);
+   }
+        
     </script>
 </body>
 
