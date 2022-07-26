@@ -8,22 +8,21 @@
 </head>
 
 <body>
+ <button type="button" onclick="OpenWps()">启动WPS表格助手</button>
     <script>
-        //var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/ksdocs/" };
+        function OpenWps() {
+            WpsInvoke.InvokeAsHttp(
+                WpsInvoke.ClientType.et,
+                "wpsapp",
+                "newWorkBook",
+                JSON.stringify(null), () => { }, true, "https://zhibiao.uicp.fun/jsplugins.xml", false);
+            window.opener = null;
+            window.open('', '_self');
+            window.close();
+
+        }
        
-        //wpsClient = new WpsClient(WpsInvoke.ClientType.et);
-        //wpsClient.jsPluginsXml = "https://fxzqf.github.io/ksdocs/jsplugins.xml";
-        //wpsClient.InvokeAsHttp("wpsapp","newWorkbook",JSON.stringify(null),() => {},false);
-        //window.opener=null;
-        //window.open('','_self');
-        //window.close(); 
-         window.onload=()=>{
-        WpsInvoke.InvokeAsHttp(
-        WpsInvoke.ClientType.et,
-        "wpsapp",
-        "newWorkbook",
-        JSON.stringify(null),() => {  }, true,"https://zhibiao.uicp.fun/jsplugins.xml",false);
-   }
+   
         
     </script>
 </body>
