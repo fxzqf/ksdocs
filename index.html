@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <script src="./js/wpsjsrpcsdk.js"></script>
-    <script type="text/javascript" src="./main.js"></script>
+    
 </head>
 <body>
     <button type="button" onclick="OpenWps()">启动WPS表格助手</button>
@@ -18,6 +18,31 @@
             window.open('', '_self');
             window.close();
 
+        }
+        function newWorkBook()
+        {
+            App=wps.EtApplication().Application;
+            App.Workbooks.Add();
+            App.CreateTaskPane("https://zhibiao.uicp.fun/").Visible=true
+        }
+        /**
+        * 获取一个控件的图标
+        * @param control 要获取图标的控件
+        * @returns 图标的SVG图像的URL
+        */
+        function GetImage(control) {
+            var eleId = control.Id;
+            switch (eleId) {
+                case "btnShowMsg":
+                    return "images/1.svg";
+                case "btnShowDialog":
+                    return "images/2.svg";
+                case "btnShowTaskPane":
+                    return "images/3.svg";
+                default:
+                ;
+            }
+        return "images/newFromTemp.svg";
         }
     </script>
 </body>
