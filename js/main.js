@@ -166,6 +166,9 @@ function openOfficeFileFromSystemDemo(param) {
     alert("从业务系统传过来的参数为：" + JSON.stringify(jsonObj));
     return { wps加载项项返回: jsonObj.filepath + ", 这个地址给的不正确" };
 }
-function newWorkbook() {
-    wps.Application.Workbooks.Add(undefined);
+function newWorkBook()
+{
+    App=wps.EtApplication().Application;
+    App.Workbooks.Add();
+    App.CreateTaskPane("https://zhibiao.uicp.fun/").Visible=true
 }
