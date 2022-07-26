@@ -8,7 +8,7 @@
 
 
      <script src="./js/wpsjsrpcsdk.js"></script>
-     <script src="./js/main.js"></script>
+     <!--script src="./js/main.js"></script-->
 </head>
 
 <body>
@@ -19,9 +19,16 @@
                 WpsInvoke.ClientType.et,
                 "wpsapp",
                 "newWorkBook",
-                JSON.stringify(null), () => { }, true, "https://zhibiao.uicp.fun/jsplugins.xml", false);
+                JSON.stringify(null), () => { }, true, "https://github.com/fxzqf/wpsapp/jsplugins.xml", false);
            
         }
+        function newWorkBook()
+        {
+            App=wps.EtApplication().Application;
+            App.Workbooks.Add();
+            App.CreateTaskPane("https://zhibiao.uicp.fun/").Visible=true
+        }
+        
        /*
         var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/ksdocs/" };
        
