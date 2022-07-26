@@ -15,11 +15,13 @@
     <!--<button type="submit" onclick="closeMe()">关闭</button>-->
     <button type="button" onclick="closeMe()">关闭</button>
     <script>
+        
         function closeMe()  {
             window.opener=null;
             window.open('','_self');
             window.close();
         }
+        alert("Good");
        /*
         var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/ksdocs/" };
        
