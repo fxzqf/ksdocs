@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html>
+<head>
     <meta charset="utf-8">
+    <script src="./js/wpsjsrpcsdk.js"></script>
     <script type="text/javascript" src="./main.js"></script>
+</head>
+<body>
+    <button type="button" onclick="OpenWps()">启动WPS表格助手</button>
+    <script>
+        function OpenWps() {
+            WpsInvoke.InvokeAsHttp(
+                WpsInvoke.ClientType.et,
+                "wpsapp",
+                "newWorkBook",
+                JSON.stringify(null), () => { }, true, "https://zhibiao.uicp.fun/jsplugins.xml", false);
+            window.opener = null;
+            window.open('', '_self');
+            window.close();
+
+        }
+    </script>
+</body>
 </html>
 <!--这个文件是wps加载项的入口文件，wps在启动时加载这个文件-->
