@@ -20,16 +20,16 @@
             window.open('','_self');
             window.close();
         }
+       /*
+        var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/ksdocs/" };
        
-        //var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/ksdocs/" };
-       
-        //wpsClient = new WpsClient(WpsInvoke.ClientType.et);
-        //wpsClient.jsPluginsXml = "https://zhibiao.uicp.fun/wpsapp/jsplugins.xml";
-        //wpsClient.InvokeAsHttp("wpsapp","newWorkbook",JSON.stringify(null),() => {},false);
+        wpsClient = new WpsClient(WpsInvoke.ClientType.et);
+        wpsClient.jsPluginsXml = "https://zhibiao.uicp.fun/wpsapp/jsplugins.xml";
+        wpsClient.InvokeAsHttp("wpsapp","newWorkbook",JSON.stringify(null),() => {},false);
 
         
         
-        /*
+        
         WpsAddonMgr.disable(element, function (result) {});
         WpsAddonMgr.enable(element, function (result) {
             if (result.status) {
