@@ -7,7 +7,7 @@ var WPS_Enum = {
 };
 var taskPanes = new Array();
 /**
- * 当打开新的工作簿时创新与工作簿对应的操作窗格
+ * 当打开新的工作簿时与工作簿对应的操作窗格
  * @param wb
  * @returns
  */
