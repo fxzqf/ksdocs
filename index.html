@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <title>wps表格助手</title>
     <script src="./js/wpsjsrpcsdk.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
 </head>
 
 <body>
-    <button  type="button" onclick="closeMe()">启动WPS表格助手</button>
-    <a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a>.
+    <!--button  type="button" onclick="closeMe()">启动WPS表格助手</button-->
+    <!--a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a-->
     <script>
         function closeMe()
         {
@@ -19,17 +20,17 @@
             window.close();
         }
 
-        function OpenWps() {
+
+
+        window.onload=()=>{
+            let url=location.href.split("?")[1];
+            let parames=new URLSearchParams(url);
             WpsInvoke.InvokeAsHttp(
                 WpsInvoke.ClientType.et,
                 "wpsapp",
                 "newWorkBook",
                 JSON.stringify(null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
-        }
 
-        window.onload=()=>{
-            let url=location.href.split("?")[1];
-            let parames=new URLSearchParams(url);
         }
     </script>
 </body>
