@@ -12,19 +12,8 @@
     <!--button  type="button" onclick="closeMe()">启动WPS表格助手</button-->
     <!--a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a-->
     <script>
-        function closeMe() {
-            window.opener = null;
-            window.open('', '_self');
-            window.close();
-        }
-
-
-
         window.onload = () => {
             let url = location.href.split("?");
-            //let parames=new URLSearchParams(url);
-            //alert(parames);
-            //{"name":"菜鸟教程", "site":"http://www.runoob.com"}
             if (url.length > 1)
                 WpsInvoke.InvokeAsHttp(
                     WpsInvoke.ClientType.et,
@@ -36,4 +25,3 @@
 </body>
 
 </html>
-<!--这个文件是wps加载项的入口文件，wps在启动时加载这个文件-->
