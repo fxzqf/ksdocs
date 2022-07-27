@@ -14,12 +14,11 @@
     <script>
         window.onload = () => {
             let url = location.href.split("?");
-            if (url.length > 1)
-                WpsInvoke.InvokeAsHttp(
-                    WpsInvoke.ClientType.et,
-                    "wpsapp",
-                    "openBook",
-                    JSON.stringify(url[1]), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
+            WpsInvoke.InvokeAsHttp(
+                WpsInvoke.ClientType.et,
+                "wpsapp",
+                "openBook",
+                JSON.stringify(url.length>1?url[1]:null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
         }
     </script>
 </body>
