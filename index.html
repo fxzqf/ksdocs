@@ -23,14 +23,15 @@
 
 
         window.onload=()=>{
-            let url=location.href.split("?")[1];
-            let parames=new URLSearchParams(url);
-            alert(parames);
+            //let url=location.href.split("?")[1];
+            //let parames=new URLSearchParams(url);
+            //alert(parames);
+            //{"name":"菜鸟教程", "site":"http://www.runoob.com"}
             WpsInvoke.InvokeAsHttp(
                 WpsInvoke.ClientType.et,
                 "wpsapp",
                 "newWorkBook",
-                JSON.stringify({"name":"菜鸟教程", "site":"http://www.runoob.com"}), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
+                JSON.stringify(location.href.split("?")[1]), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
 
         }
     </script>
