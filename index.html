@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     <meta charset="utf-8">
     <title>wps表格助手</title>
     <script src="./js/wpsjsrpcsdk.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
     <button type="button" onclick="OpenWps()">启动WPS表格助手</button>
     <script>
@@ -16,32 +18,9 @@
                 "newWorkBook",
                 JSON.stringify(null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
         }
-        function newWorkBook()
-        {
-            App=wps.EtApplication().Application;
-            App.Workbooks.Add();
-            App.CreateTaskPane("https://zhibiao.uicp.fun/").Visible=true
-        }
-        /**
-        * 获取一个控件的图标
-        * @param control 要获取图标的控件
-        * @returns 图标的SVG图像的URL
-        */
-        function GetImage(control) {
-            var eleId = control.Id;
-            switch (eleId) {
-                case "btnShowMsg":
-                    return "images/1.svg";
-                case "btnShowDialog":
-                    return "images/2.svg";
-                case "btnShowTaskPane":
-                    return "images/3.svg";
-                default:
-                ;
-            }
-        return "images/newFromTemp.svg";
-        }
+
     </script>
 </body>
+
 </html>
 <!--这个文件是wps加载项的入口文件，wps在启动时加载这个文件-->
