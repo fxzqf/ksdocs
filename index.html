@@ -9,8 +9,15 @@
 </head>
 
 <body>
-    <button type="button" onclick="OpenWps()">启动WPS表格助手</button>
+    <button  type="button" onclick="closeMe()">启动WPS表格助手</button>
     <script>
+        function closeMe()
+        {
+            window.opener=null;
+            window.open('','_self');
+            window.close();
+        }
+
         function OpenWps() {
             WpsInvoke.InvokeAsHttp(
                 WpsInvoke.ClientType.et,
@@ -19,6 +26,11 @@
                 JSON.stringify(null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
         }
 
+        window.onload=()=>{
+            let url=location.href.split("?")[1];
+            let parames=new URLSearchParams(url);
+            alert(parames.keys.length);
+        }
     </script>
 </body>
 
