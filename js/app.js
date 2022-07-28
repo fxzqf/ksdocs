@@ -1,7 +1,6 @@
 "use strict";
 /// <reference path="./src/index.d.ts" />
 function OnAddinLoad(ribbonUI) {
-    alert("Good");
     return true;
 }
 function openBook(obj) {
