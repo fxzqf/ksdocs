@@ -3,9 +3,10 @@
 let app=wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI:any) {
     if(app.Workbooks.Count==0) app.Workbooks.Add();
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/","表格助手").Visible=true;
+    
     app.WindowState=-4137;    //Et.EtXlWindowState.xlMaximized;
     app.Visible=true;
+    wps.CreateTaskPane("https://zhibiao.uicp.fun/","表格助手").Visible=true;
     return true;
 }
 function openBook(obj:string)
