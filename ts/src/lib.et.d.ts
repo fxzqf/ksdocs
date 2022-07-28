@@ -3524,7 +3524,7 @@ declare namespace Et {
         /**
 		* Visible
 		**/
-        Visible: number;
+        Visible: number|boolean;
 
         DDETerminate(Channel?: number, lcid?: number): void;
 

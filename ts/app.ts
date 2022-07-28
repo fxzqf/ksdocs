@@ -3,8 +3,7 @@
 let app=wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI:any) {
     if(app.Workbooks.Count==0) app.Workbooks.Add();
-    
-    app.WindowState=-4137;    //Et.EtXlWindowState.xlMaximized;
+    //app.WindowState=-4137;    //Et.EtXlWindowState.xlMaximized;
     app.Visible=true;
     wps.CreateTaskPane("https://zhibiao.uicp.fun/","表格助手").Visible=true;
     return true;
