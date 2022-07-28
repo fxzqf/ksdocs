@@ -10,6 +10,7 @@ declare namespace wps {
 
 let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI: Kso.KsoRibbonUI) {
+    alert("Addin");
     if (app.Workbooks.Count == 0) app.Workbooks.Add();
     wps.RibbonUI = ribbonUI;
     //app.WindowState=Et.EtXlWindowState.xlMaximized;
@@ -18,7 +19,7 @@ function OnAddinLoad(ribbonUI: Kso.KsoRibbonUI) {
     return true;
 }
 window.onload=()=>{
-    alert("DD");
+    alert("Window");
 }
 function openBook(obj: string) {
     //wps.PluginStorage.getItem()

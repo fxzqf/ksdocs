@@ -1,16 +1,17 @@
 "use strict";
 let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI) {
+    alert("Addin");
     if (app.Workbooks.Count == 0)
         app.Workbooks.Add();
     wps.RibbonUI = ribbonUI;
-    app.WindowState = Et.EtXlWindowState.xlMaximized;
+    //app.WindowState=Et.EtXlWindowState.xlMaximized;
     app.Visible = true;
     wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     return true;
 }
 window.onload = () => {
-    alert("DD");
+    alert("Window");
 };
 function openBook(obj) {
     //wps.PluginStorage.getItem()
