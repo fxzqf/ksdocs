@@ -4,7 +4,7 @@ function openBook(obj:string)
     //let App=wps.EtApplication().Application;
     //App.Workbooks.Add();
     
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/","表格助手").Visible=true
+    wps.CreateTaskPane("https://zhibiao.uicp.fun/","表格助手1").Visible=true
     
     //aap.Visible=true;
 }
@@ -13,7 +13,7 @@ function openBook(obj:string)
 * @param control 要获取图标的控件
 * @returns 图标的SVG图像的URL
 */
-function GetImage(control) {
+function GetImage(control:any) {
     var eleId = control.Id;
     switch (eleId) {
         case "btnShowMsg":

@@ -3,7 +3,7 @@
 function openBook(obj) {
     //let App=wps.EtApplication().Application;
     //App.Workbooks.Add();
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
+    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手1").Visible = true;
     //aap.Visible=true;
 }
 /**
