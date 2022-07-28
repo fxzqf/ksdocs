@@ -1,5 +1,7 @@
 /// <reference path="./src/index.d.ts" />
+function OnAddinLoad(ribbonUI:any) {
 
+}
 function openBook(obj:string)
 {
     //wps.PluginStorage.getItem()

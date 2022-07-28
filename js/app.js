@@ -1,5 +1,7 @@
 "use strict";
 /// <reference path="./src/index.d.ts" />
+function OnAddinLoad(ribbonUI) {
+}
 function openBook(obj) {
     //wps.PluginStorage.getItem()
     //let App=wps.EtApplication().Application;
