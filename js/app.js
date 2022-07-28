@@ -1,14 +1,17 @@
 "use strict";
-/// <reference path="index.d.ts" />
 let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI) {
     if (app.Workbooks.Count == 0)
         app.Workbooks.Add();
+    wps.RibbonUI = ribbonUI;
     //app.WindowState=-4137;    //Et.EtXlWindowState.xlMaximized;
     app.Visible = true;
     wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     return true;
 }
+window.onload = () => {
+    alert("DD");
+};
 function openBook(obj) {
     //wps.PluginStorage.getItem()
     //let App=wps.EtApplication().Application;

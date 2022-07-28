@@ -1,32 +1,41 @@
 "use strict";
 /// <reference path="index.d.ts" />
-let app=wps.EtApplication().Application;
-function OnAddinLoad(ribbonUI:any) {
-    if(app.Workbooks.Count==0) app.Workbooks.Add();
+declare namespace wps {
+    export let RibbonUI: Kso.KsoRibbonUI;
+    export let Enum: any;
+    export let Application: Et.EtApplication;
+    export let ActiveTaskPane: wps.CustomTaskpane | null;
+}
+
+
+let app = wps.EtApplication().Application;
+function OnAddinLoad(ribbonUI: Kso.KsoRibbonUI) {
+    if (app.Workbooks.Count == 0) app.Workbooks.Add();
+    wps.RibbonUI = ribbonUI;
     //app.WindowState=-4137;    //Et.EtXlWindowState.xlMaximized;
-    app.Visible=true;
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/","表格助手").Visible=true;
+    app.Visible = true;
+    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     return true;
 }
-function openBook(obj:string)
-{
+window.onload=()=>{
+    alert("DD");
+}
+function openBook(obj: string) {
     //wps.PluginStorage.getItem()
-    
+
     //let App=wps.EtApplication().Application;
     //App.Workbooks.Add();
 
-    
 
-    
-    
+
+
+
     //aap.Visible=true;
 }
-function OnAction(control:any)
-{
+function OnAction(control: Kso.KsoRibbonControl) {
 
 }
-function OnGetEnabled(control:any)
-{
+function OnGetEnabled(control: Kso.KsoRibbonControl) {
     return true;
 }
 /**
@@ -34,7 +43,7 @@ function OnGetEnabled(control:any)
 * @param control 要获取图标的控件
 * @returns 图标的SVG图像的URL
 */
-function GetImage(control:any) {
+function GetImage(control: any) {
     var eleId = control.Id;
     switch (eleId) {
         case "btnShowMsg":
@@ -44,7 +53,7 @@ function GetImage(control:any) {
         case "btnShowTaskPane":
             return "./images/3.svg";
         default:
-        ;
+            ;
     }
-return "./images/newFromTemp.svg";
+    return "./images/newFromTemp.svg";
 }
