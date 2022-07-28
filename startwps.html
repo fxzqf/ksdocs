@@ -13,12 +13,12 @@
     <!--a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a-->
     <script>
         window.onload = () => {
-            let url = location.href.split("?");
+            //let url = location.href.split("?");
             WpsInvoke.InvokeAsHttp(
                 WpsInvoke.ClientType.et,
                 "wpsapp",
-                "openBook",
-                JSON.stringify(url.length > 1 ? url[1] : null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
+                "",
+                JSON.stringify(null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
         }
 
         /*
