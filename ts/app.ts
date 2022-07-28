@@ -32,5 +32,5 @@ function GetImage(control:any) {
         default:
         ;
     }
-return ".images/newFromTemp.svg";
+return "./images/newFromTemp.svg";
 }
