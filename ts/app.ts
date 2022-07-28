@@ -1,6 +1,6 @@
 /// <reference path="./src/index.d.ts" />
 function OnAddinLoad(ribbonUI:any) {
-    
+    wps.CreateTaskPane("https://zhibiao.uicp.fun/","表格助手").Visible=true
     return true;
 }
 function openBook(obj:string)
@@ -12,7 +12,7 @@ function openBook(obj:string)
 
     
 
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/","表格助手").Visible=true
+    
     
     //aap.Visible=true;
 }

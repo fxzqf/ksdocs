@@ -1,13 +1,13 @@
 "use strict";
 /// <reference path="./src/index.d.ts" />
 function OnAddinLoad(ribbonUI) {
+    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     return true;
 }
 function openBook(obj) {
     //wps.PluginStorage.getItem()
     //let App=wps.EtApplication().Application;
     //App.Workbooks.Add();
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     //aap.Visible=true;
 }
 function OnGetEnabled(control) {
