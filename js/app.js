@@ -1,7 +1,11 @@
 "use strict";
 /// <reference path="./src/index.d.ts" />
+let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI) {
+    if (app.Workbooks.Count == 0)
+        app.Workbooks.Add();
     wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
+    //app.Visible=true;
     return true;
 }
 function openBook(obj) {
