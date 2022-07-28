@@ -19,6 +19,10 @@ function openBook(obj:string)
     
     //aap.Visible=true;
 }
+function OnAction(control:any)
+{
+    
+}
 function OnGetEnabled(control:any)
 {
     return true;

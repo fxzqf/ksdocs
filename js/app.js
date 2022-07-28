@@ -14,6 +14,8 @@ function openBook(obj) {
     //App.Workbooks.Add();
     //aap.Visible=true;
 }
+function OnAction(control) {
+}
 function OnGetEnabled(control) {
     return true;
 }
