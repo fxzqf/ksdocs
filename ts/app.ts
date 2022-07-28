@@ -12,7 +12,7 @@ let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI: Kso.KsoRibbonUI) {
     if (app.Workbooks.Count == 0) app.Workbooks.Add();
     wps.RibbonUI = ribbonUI;
-    //app.WindowState=-4137;    //Et.EtXlWindowState.xlMaximized;
+    //app.WindowState=Et.EtXlWindowState.xlMaximized;
     app.Visible = true;
     wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     return true;
