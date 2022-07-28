@@ -1,9 +1,10 @@
 "use strict";
 /// <reference path="./src/index.d.ts" />
 function openBook(obj) {
+    //wps.PluginStorage.getItem()
     //let App=wps.EtApplication().Application;
     //App.Workbooks.Add();
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手1").Visible = true;
+    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     //aap.Visible=true;
 }
 /**
@@ -15,11 +16,11 @@ function GetImage(control) {
     var eleId = control.Id;
     switch (eleId) {
         case "btnShowMsg":
-            return "../images/1.svg";
+            return "images/1.svg";
         case "btnShowDialog":
-            return "../images/2.svg";
+            return "images/2.svg";
         case "btnShowTaskPane":
-            return "../images/3.svg";
+            return "images/3.svg";
         default:
             ;
     }
