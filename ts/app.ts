@@ -15,6 +15,10 @@ function openBook(obj:string)
     
     //aap.Visible=true;
 }
+function OnGetEnabled(control:any)
+{
+    return true;
+}
 /**
 * 获取一个控件的图标
 * @param control 要获取图标的控件

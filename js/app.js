@@ -10,6 +10,9 @@ function openBook(obj) {
     wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     //aap.Visible=true;
 }
+function OnGetEnabled(control) {
+    return true;
+}
 /**
 * 获取一个控件的图标
 * @param control 要获取图标的控件
@@ -27,5 +30,5 @@ function GetImage(control) {
         default:
             ;
     }
-    return ".images/newFromTemp.svg";
+    return "./images/newFromTemp.svg";
 }
