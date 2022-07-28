@@ -22,13 +22,13 @@ function GetImage(control:any) {
     var eleId = control.Id;
     switch (eleId) {
         case "btnShowMsg":
-            return "images/1.svg";
+            return "./images/1.svg";
         case "btnShowDialog":
-            return "images/2.svg";
+            return "./images/2.svg";
         case "btnShowTaskPane":
-            return "images/3.svg";
+            return "./images/3.svg";
         default:
         ;
     }
-return "../images/newFromTemp.svg";
+return ".images/newFromTemp.svg";
 }
