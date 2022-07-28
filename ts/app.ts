@@ -1,6 +1,6 @@
 /// <reference path="./src/index.d.ts" />
 function OnAddinLoad(ribbonUI:any) {
-
+    alert("Good");
 }
 function openBook(obj:string)
 {
