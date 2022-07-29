@@ -110,16 +110,16 @@ window.onload = () => {
     else {
         for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
             var wb1 = (<Et.EtWorkbook>wps.Application.Workbooks.Item(i));
-            var obj=wb1.CustomDocumentProperties;
+            var obj = wb1.CustomDocumentProperties;
             for (var x = obj.Count; x > 0; x--) {
                 if (obj.Item(x).Name == "TaskPane") {
-                    taskPanes.push({ wb:wb1,tp: wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手")});
+                    taskPanes.push({ wb: wb1, tp: wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手") });
                 }
             }
         }
-        wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
-        wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
-        wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
-        wps.ApiEvent.AddApiEventListener("WorkbookOpen", onWorkbookOpen);
     }
+    wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
+    wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
+    wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
+    wps.ApiEvent.AddApiEventListener("WorkbookOpen", onWorkbookOpen);
 }

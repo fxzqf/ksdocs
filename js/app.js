@@ -93,9 +93,9 @@ window.onload = () => {
                 }
             }
         }
-        wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
-        wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
-        wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
-        wps.ApiEvent.AddApiEventListener("WorkbookOpen", onWorkbookOpen);
     }
+    wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
+    wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
+    wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
+    wps.ApiEvent.AddApiEventListener("WorkbookOpen", onWorkbookOpen);
 };
