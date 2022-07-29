@@ -70,7 +70,7 @@ declare namespace wps {
         export function AddApiEventListener(WpsEventName: 'WindowSelectionChange', callback: (Selection: object) => void): void;
         export function AddApiEventListener(WpsEventName: 'SelectionAfterStyleChange', callback: (Selection: object) => void): void;
 
-        export function AddApiEventListener(EtEventName: 'WorkbookOpen', callback: (Workbook: object) => void): void;
+        export function AddApiEventListener(EtEventName: 'WorkbookOpen', callback: (Workbook: Et.EtWorkbook) => void): void;
         export function AddApiEventListener(EtEventName: 'NewWorkbook', callback: (Workbook: object) => void): void;
         export function AddApiEventListener(EtEventName: 'WorkbookBeforeSave', callback: (Workbook: object) => void): void;
         export function AddApiEventListener(EtEventName: 'WorkbookAfterSave', callback: (Workbook: object) => void): void;
