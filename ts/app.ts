@@ -109,7 +109,6 @@ window.onload = () => {
     }
     else {
         for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
-
             var obj = <Et.EtWorkbook>wps.Application.Workbooks.Item(i);
            alert(obj.Name);
             //for (var x = obj.Count; x > 0; x--) {
