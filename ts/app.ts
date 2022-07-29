@@ -108,13 +108,14 @@ window.onload = () => {
         tp1.Visible = true;
     }
     else {
-        alert("GOOD");
         for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
             var wb1 = (<Et.EtWorkbook>wps.Application.Workbooks.Item(i));
             var obj = wb1.CustomDocumentProperties;
             for (var x = obj.Count; x > 0; x--) {
                 if (obj.Item(x).Name == "TaskPane") {
-                    taskPanes.push({ wb: wb1, tp: wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手") });
+                    var tp1=wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手") ;
+                    taskPanes.push({ wb: wb1, tp: tp1});
+                    if(wb1.FullName==wps.Application.ActiveWorkbook.FullName) tp1.Visible=true;
                 }
             }
         }
