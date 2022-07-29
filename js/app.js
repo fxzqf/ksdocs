@@ -44,7 +44,7 @@ function onWorkbookOpen(wb) {
 function onWorkbookBeforeClose(wb) {
 }
 /**
- *
+ * 当窗口不活动时隐藏工作簿对应的操作窗格
  */
 function onWindowDeactivate(wb, win) {
     taskPanes.forEach(element => {
