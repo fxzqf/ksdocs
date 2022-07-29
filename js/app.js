@@ -94,8 +94,7 @@ window.onload = () => {
     }
     else {
         for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
-            var wb1 = wps.Application.Workbooks.Item(i);
-            onWorkbookOpen(wb1);
+            onWorkbookOpen(wps.Application.Workbooks.Item(i));
         }
     }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
