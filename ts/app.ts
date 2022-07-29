@@ -57,8 +57,15 @@ function GetImage(control: any) {
     }
     return "./images/newFromTemp.svg";
 }
-function onWorkbookOpen(wb: object) {
-
+function onWorkbookOpen(wb1: object) {
+    var obj = (<Et.EtWorkbook>wb1).CustomDocumentProperties;
+    for (var x = obj.Count; x > 0; x--) {
+        if (obj.Item(x).Name == "TaskPane") {
+            var tp1=wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手") ;
+            taskPanes.push({ wb: (<Et.EtWorkbook>wb1), tp: tp1});
+            if((<Et.EtWorkbook>wb1).FullName==wps.Application.ActiveWorkbook.FullName) tp1.Visible=true;
+        }
+    }
 }
 /**
  * 
@@ -110,14 +117,7 @@ window.onload = () => {
     else {
         for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
             var wb1 = (<Et.EtWorkbook>wps.Application.Workbooks.Item(i));
-            var obj = wb1.CustomDocumentProperties;
-            for (var x = obj.Count; x > 0; x--) {
-                if (obj.Item(x).Name == "TaskPane") {
-                    var tp1=wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手") ;
-                    taskPanes.push({ wb: wb1, tp: tp1});
-                    if(wb1.FullName==wps.Application.ActiveWorkbook.FullName) tp1.Visible=true;
-                }
-            }
+            onWorkbookOpen(wb1);
         }
     }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
