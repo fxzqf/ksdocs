@@ -17,22 +17,21 @@
         WpsAddonMgr.getAllConfig(function (e) {
             if (!e.response || e.response.indexOf("null") >= 0) { }
             else {
-                
                 JSON.parse(e.response).forEach(e1 => {
                     if (e1.url = element.rul) installed = true;
-                    
                 });
             }
         });
         if (!installed) {
             WpsAddonMgr.disable(element, function (result) { });
-            WpsAddonMgr.enable(element, function (result) { 
-                WpsInvoke.InvokeAsHttp(
-                WpsInvoke.ClientType.et,
-                "wpsapp",
-                "",
-                JSON.stringify(null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
-            });
+            WpsAddonMgr.enable(element,
+                result => {
+                    WpsInvoke.InvokeAsHttp(
+                        WpsInvoke.ClientType.et,
+                        "wpsapp",
+                        "",
+                        JSON.stringify(null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
+                });
         }
 
 
