@@ -66,16 +66,19 @@ function onWorkbookOpen(wb: object) {
  */
 function onWorkbookBeforeClose(wb: object) {
     taskPanes.forEach(element => {
-        if((wb as Et.EtWorkbook).FullName==element.wb.FullName) element.tp.Delete();
-   });
+        if ((wb as Et.EtWorkbook).FullName == element.wb.FullName) {
+            taskPanes.splice(taskPanes.indexOf(element), 1);
+            element.tp.Delete();
+        }
+    });
 }
 /**
  * 当窗口不活动时隐藏工作簿对应的操作窗格
  */
-function onWindowDeactivate(wb:object, win: object) {
+function onWindowDeactivate(wb: object, win: object) {
     taskPanes.forEach(element => {
-        if((wb as Et.EtWorkbook).FullName==element.wb.FullName) element.tp.Visible=false;
-   });
+        if ((<Et.EtWorkbook>wb).FullName == element.wb.FullName) element.tp.Visible = false;
+    });
 
 }
 
@@ -85,9 +88,9 @@ function onWindowDeactivate(wb:object, win: object) {
  * @param win
  * @returns
  */
-function onWindowActivate(wb:object, win: object) {
+function onWindowActivate(wb: object, win: object) {
     taskPanes.forEach(element => {
-         if((wb as Et.EtWorkbook).FullName==element.wb.FullName) element.tp.Visible=true;
+        if ((wb as Et.EtWorkbook).FullName == element.wb.FullName) element.tp.Visible = true;
     });
 }
 
@@ -107,6 +110,9 @@ window.onload = () => {
     else {
         for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
 
+            var obj = <Et.EtWorkbook>wps.Application.Workbooks.Item(i);
+           alert(obj.Name);
+            //for (var x = obj.Count; x > 0; x--) {
         }
     }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);

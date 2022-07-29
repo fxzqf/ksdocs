@@ -15642,7 +15642,7 @@ declare namespace Et {
 		**/
         readonly Application: EtApplication;
 
-        Item(Index?: any, RHS?: EtWorkbook): void;
+        Item(Index?: any, RHS?: EtWorkbook): any;
 
         /**
 		* Creator

@@ -43,8 +43,10 @@ function onWorkbookOpen(wb) {
  */
 function onWorkbookBeforeClose(wb) {
     taskPanes.forEach(element => {
-        if (wb.FullName == element.wb.FullName)
+        if (wb.FullName == element.wb.FullName) {
+            taskPanes.splice(taskPanes.indexOf(element), 1);
             element.tp.Delete();
+        }
     });
 }
 /**
@@ -83,6 +85,9 @@ window.onload = () => {
     }
     else {
         for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
+            var obj = wps.Application.Workbooks.Item(i);
+            alert(obj.Name);
+            //for (var x = obj.Count; x > 0; x--) {
         }
     }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
