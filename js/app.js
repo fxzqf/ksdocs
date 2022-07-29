@@ -3,7 +3,6 @@ let taskPanes = new Array();
 //let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI) {
     wps.RibbonUI = ribbonUI;
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     return true;
 }
 function openBook(obj) {
@@ -72,9 +71,11 @@ function onWindowActivate(wb, win) {
 window.onload = () => {
     if (wps.Application)
         wps.Application = wps.EtApplication();
-    if (wps.Application.Workbooks.Count == 0)
+    if (wps.Application.Workbooks.Count == 0) {
         wps.Application.Workbooks.Add();
-    wps.Application.Visible = true;
+        wps.Application.Visible = true;
+        wps.CreateTaskPane("https://fxzqf.github.io/wpsapp/publish.html", "欢迎使用表格助手").Visible = true;
+    }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
     wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
     wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);

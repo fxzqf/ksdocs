@@ -6,13 +6,13 @@ declare namespace wps {
     export let Application: Et.EtApplication;
     export let ActiveTaskPane: wps.CustomTaskpane | null;
 }
-let taskPanes: Array<{wb:Et.EtWorkbook,tp: wps.CustomTaskpane}> = new Array();
+let taskPanes: Array<{ wb: Et.EtWorkbook, tp: wps.CustomTaskpane }> = new Array();
 
 //let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI: Kso.KsoRibbonUI) {
 
     wps.RibbonUI = ribbonUI;
-    wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
+
     return true;
 }
 
@@ -83,18 +83,18 @@ function onWindowDeactivate(b: object, win: object) {
 function onWindowActivate(wb: object, win: object) {
     taskPanes.forEach(element => {
 
-        
+
     });
-    
-    
+
+
     //for (var _i = 0, taskPanes_2 = taskPanes; _i < taskPanes_2.length; _i++) {
 
 
-        //    var taskPane = taskPanes_2[_i];
-        //    if (taskPane.Name == name) {
-        //        (wps.ActiveTaskPane = wps.GetTaskPane(taskPane.ID)).Visible = true;
-        //        return;
-        //    }
+    //    var taskPane = taskPanes_2[_i];
+    //    if (taskPane.Name == name) {
+    //        (wps.ActiveTaskPane = wps.GetTaskPane(taskPane.ID)).Visible = true;
+    //        return;
+    //    }
     //}
 }
 
@@ -102,10 +102,13 @@ function onWindowActivate(wb: object, win: object) {
  * 
  */
 window.onload = () => {
-    
+
     if (wps.Application) wps.Application = wps.EtApplication();
-    if (wps.Application.Workbooks.Count == 0) wps.Application.Workbooks.Add();
-    wps.Application.Visible = true;
+    if (wps.Application.Workbooks.Count == 0) {
+        wps.Application.Workbooks.Add();
+        wps.Application.Visible = true;
+        wps.CreateTaskPane("https://fxzqf.github.io/wpsapp/publish.html", "欢迎使用表格助手").Visible = true;
+    }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
     wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
     wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
