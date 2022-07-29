@@ -7,10 +7,10 @@
                     <button id="btnIsEnbable" getLabel="OnGetLabel" onAction="OnAction" enabled="true"  getImage="GetImage" visible="true" size="large"/>
                     <button id="btnShowDialog" label="弹对话框网页" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
                     -->
-                    <button id="btnShowTaskPane" label="表格助手" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage"  size="large"/>
+                    <button id="btnWebNotify" label="表格助手" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage"  size="large"/>
                     <!--
                     <button id="btnApiEvent" getLabel="OnGetLabel" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
-                    <button id="btnWebNotify" label="给业务系统发通知" onAction="OnAction" enabled="true"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
+                    <button id="btnShowTaskPane" label="给业务系统发通知" onAction="OnAction" enabled="true"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
 				-->
                 </group>
             </tab>

@@ -57,6 +57,7 @@ function GetImage(control: any) {
     }
     return "./images/newFromTemp.svg";
 }
+
 function onWorkbookOpen(wb1: Et.EtWorkbook) {
     var obj = wb1.CustomDocumentProperties;
     for (var x = obj.Count; x > 0; x--) {
