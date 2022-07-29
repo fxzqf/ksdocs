@@ -107,10 +107,13 @@ window.onload = () => {
     if (wps.Application.Workbooks.Count == 0) {
         wps.Application.Workbooks.Add();
         wps.Application.Visible = true;
-        let tp1= wps.CreateTaskPane("https://fxzqf.github.io/wpsapp/about.html", "欢迎使用表格助手");
+        let tp1= wps.CreateTaskPane("https://fxzqf.github.io/wpsapp/about.html", "关于表格助手");
+        taskPanes.push({wb:wps.Application.ActiveWorkbook,tp:tp1});
         tp1.Visible = true;
-        let wb1=wps.Application.ActiveWorkbook;
-        taskPanes.push({wb:wb1,tp:tp1});
+    }
+    else
+    {
+
     }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
     wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
