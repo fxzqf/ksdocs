@@ -33,7 +33,7 @@ function openBook(obj: string) {
     //aap.Visible=true;
 }
 function OnAction(control: Kso.KsoRibbonControl) {
-
+    return true;
 }
 function OnGetEnabled(control: Kso.KsoRibbonControl) {
     return true;
@@ -64,7 +64,7 @@ function onWorkbookOpen(wb1: Et.EtWorkbook) {
         if (obj.Item(x).Name == "TaskPane") {
             var tp1 = wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手");
             taskPanes.push({ wb: wb1, tp: tp1 });
-            if (wb1.FullName == wps.Application.ActiveWorkbook.FullName) tp1.Visible = true;  
+            if (wb1.FullName == wps.Application.ActiveWorkbook.FullName) tp1.Visible = true;
         }
     }
 }
