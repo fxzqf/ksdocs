@@ -2,11 +2,7 @@
 let taskPanes = new Array();
 //let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI) {
-    if (wps.Application.Workbooks.Count == 0)
-        wps.Application.Workbooks.Add();
     wps.RibbonUI = ribbonUI;
-    //wps.Application.WindowState=Et.EtXlWindowState.xlMaximized;
-    wps.Application.Visible = true;
     wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     return true;
 }
@@ -76,7 +72,9 @@ function onWindowActivate(wb, win) {
 window.onload = () => {
     if (wps.Application)
         wps.Application = wps.EtApplication();
-    alert(wps.Application.Workbooks.Count);
+    if (wps.Application.Workbooks.Count == 0)
+        wps.Application.Workbooks.Add();
+    wps.Application.Visible = true;
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
     wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
     wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
