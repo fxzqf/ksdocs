@@ -46,7 +46,11 @@ function onWorkbookBeforeClose(wb) {
 /**
  *
  */
-function onWindowDeactivate(b, win) {
+function onWindowDeactivate(wb, win) {
+    taskPanes.forEach(element => {
+        if (wb == element.wb)
+            element.tp.Visible = false;
+    });
 }
 /**
  * 当窗口激活时显示工作簿对应的操作窗格
@@ -56,6 +60,8 @@ function onWindowDeactivate(b, win) {
  */
 function onWindowActivate(wb, win) {
     taskPanes.forEach(element => {
+        if (wb == element.wb)
+            element.tp.Visible = true;
     });
     //for (var _i = 0, taskPanes_2 = taskPanes; _i < taskPanes_2.length; _i++) {
     //    var taskPane = taskPanes_2[_i];
@@ -79,6 +85,8 @@ window.onload = () => {
         tp1.Visible = true;
     }
     else {
+        for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
+        }
     }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
     wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);

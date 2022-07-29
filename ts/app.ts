@@ -70,7 +70,10 @@ function onWorkbookBeforeClose(wb: object) {
 /**
  * 
  */
-function onWindowDeactivate(b: object, win: object) {
+function onWindowDeactivate(wb: object, win: object) {
+    taskPanes.forEach(element => {
+        if(wb==element.wb) element.tp.Visible=false;
+   });
 
 }
 
@@ -82,8 +85,7 @@ function onWindowDeactivate(b: object, win: object) {
  */
 function onWindowActivate(wb: object, win: object) {
     taskPanes.forEach(element => {
-
-
+         if(wb==element.wb) element.tp.Visible=true;
     });
 
 
@@ -107,13 +109,14 @@ window.onload = () => {
     if (wps.Application.Workbooks.Count == 0) {
         wps.Application.Workbooks.Add();
         wps.Application.Visible = true;
-        let tp1= wps.CreateTaskPane("https://fxzqf.github.io/wpsapp/about.html", "关于表格助手");
-        taskPanes.push({wb:wps.Application.ActiveWorkbook,tp:tp1});
+        let tp1 = wps.CreateTaskPane("https://fxzqf.github.io/wpsapp/about.html", "关于表格助手");
+        taskPanes.push({ wb: wps.Application.ActiveWorkbook, tp: tp1 });
         tp1.Visible = true;
     }
-    else
-    {
+    else {
+        for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
 
+        }
     }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
     wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
