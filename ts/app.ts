@@ -87,17 +87,6 @@ function onWindowActivate(wb:object, win: object) {
     taskPanes.forEach(element => {
          if((wb as Et.EtWorkbook).FullName==element.wb.FullName) element.tp.Visible=true;
     });
-
-
-    //for (var _i = 0, taskPanes_2 = taskPanes; _i < taskPanes_2.length; _i++) {
-
-
-    //    var taskPane = taskPanes_2[_i];
-    //    if (taskPane.Name == name) {
-    //        (wps.ActiveTaskPane = wps.GetTaskPane(taskPane.ID)).Visible = true;
-    //        return;
-    //    }
-    //}
 }
 
 /**
