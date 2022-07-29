@@ -70,9 +70,9 @@ function onWorkbookBeforeClose(wb: object) {
 /**
  * 当窗口不活动时隐藏工作簿对应的操作窗格
  */
-function onWindowDeactivate(wb: object, win: object) {
+function onWindowDeactivate(wb:object, win: object) {
     taskPanes.forEach(element => {
-        if(wb==element.wb) element.tp.Visible=false;
+        if((wb as Et.EtWorkbook).FullName==element.wb.FullName) element.tp.Visible=false;
    });
 
 }
@@ -83,9 +83,9 @@ function onWindowDeactivate(wb: object, win: object) {
  * @param win
  * @returns
  */
-function onWindowActivate(wb: object, win: object) {
+function onWindowActivate(wb:object, win: object) {
     taskPanes.forEach(element => {
-         if(wb==element.wb) element.tp.Visible=true;
+         if((wb as Et.EtWorkbook).FullName==element.wb.FullName) element.tp.Visible=true;
     });
 
 

@@ -65,6 +65,7 @@ declare namespace wps {
         export function AddApiEventListener(WpsEventName: 'DocumentBeforeSave', callback: (Document: object) => void): void;
         export function AddApiEventListener(WpsEventName: 'WindowActivate', callback: (Document: object, Window:object) => void): void;
         export function AddApiEventListener(WpsEventName: 'WindowDeactivate', callback: (Document: object, Window:object) => void): void;
+        
         export function AddApiEventListener(WpsEventName: 'DocumentAfterClose', callback: (Document: object) => void): void;
         export function AddApiEventListener(WpsEventName: 'WindowSelectionChange', callback: (Selection: object) => void): void;
         export function AddApiEventListener(WpsEventName: 'SelectionAfterStyleChange', callback: (Selection: object) => void): void;

@@ -48,7 +48,7 @@ function onWorkbookBeforeClose(wb) {
  */
 function onWindowDeactivate(wb, win) {
     taskPanes.forEach(element => {
-        if (wb == element.wb)
+        if (wb.FullName == element.wb.FullName)
             element.tp.Visible = false;
     });
 }
@@ -60,7 +60,7 @@ function onWindowDeactivate(wb, win) {
  */
 function onWindowActivate(wb, win) {
     taskPanes.forEach(element => {
-        if (wb == element.wb)
+        if (wb.FullName == element.wb.FullName)
             element.tp.Visible = true;
     });
     //for (var _i = 0, taskPanes_2 = taskPanes; _i < taskPanes_2.length; _i++) {
