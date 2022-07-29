@@ -15,8 +15,6 @@
         var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/wpsapp/" };
         var installed = false;
         WpsAddonMgr.getAllConfig(function (e) {
-            
-            
             if (!e.response || e.response.indexOf("null") >= 0) { }
             else {
                 
@@ -26,11 +24,14 @@
                 });
             }
         });
-        
         if (!installed) {
-            alert(installed);    
             WpsAddonMgr.disable(element, function (result) { });
             WpsAddonMgr.enable(element, function (result) { });
+            WpsInvoke.InvokeAsHttp(
+                WpsInvoke.ClientType.et,
+                "wpsapp",
+                "",
+                JSON.stringify(null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
         }
 
 
