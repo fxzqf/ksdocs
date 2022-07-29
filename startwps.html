@@ -12,6 +12,29 @@
     <!--button  type="button" onclick="closeMe()">启动WPS表格助手</button-->
     <!--a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a-->
     <script>
+        var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/wpsapp/" };
+        var installed = false;
+        WpsAddonMgr.getAllConfig(function (e) {
+            
+            
+            if (!e.response || e.response.indexOf("null") >= 0) { }
+            else {
+                
+                JSON.parse(e.response).forEach(e1 => {
+                    if (e1.url = element.rul) installed = true;
+                    
+                });
+            }
+        });
+        
+        if (!installed) {
+            alert(installed);    
+            WpsAddonMgr.disable(element, function (result) { });
+            WpsAddonMgr.enable(element, function (result) { });
+        }
+
+
+        /*
         window.onload = () => {
             //let url = location.href.split("?");
             WpsInvoke.InvokeAsHttp(
@@ -21,17 +44,11 @@
                 JSON.stringify(null), () => { }, true, "https://fxzqf.github.io/wpsapp/jsplugins.xml", false);
         }
 
-        /*
-                var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/wpsapp/" };
+        
+        
         
                 //WpsAddonMgr.disable(element, function (result) { });
-                WpsAddonMgr.getAllConfig(function (e) {
-                    if (!e.response || e.response.indexOf("null") >= 0) { }//本地没有加载项，直接安装
-                    else {
-                        alert(JSON.parse(e.response)[0].name);
-                    }
-                }
-                )
+                
         
                 WpsAddonMgr.enable(element, function (result) {
                     if (result.status) {

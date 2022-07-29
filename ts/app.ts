@@ -6,21 +6,23 @@ declare namespace wps {
     export let Application: Et.EtApplication;
     export let ActiveTaskPane: wps.CustomTaskpane | null;
 }
+let taskPanes: Array<{wb:Et.EtWorkbook,tp: wps.CustomTaskpane}> = new Array();
 
-
-let app = wps.EtApplication().Application;
+//let app = wps.EtApplication().Application;
 function OnAddinLoad(ribbonUI: Kso.KsoRibbonUI) {
-    alert("Addin");
-    if (app.Workbooks.Count == 0) app.Workbooks.Add();
+
+    if (wps.Application.Workbooks.Count == 0) wps.Application.Workbooks.Add();
     wps.RibbonUI = ribbonUI;
-    //app.WindowState=Et.EtXlWindowState.xlMaximized;
-    app.Visible = true;
+    //wps.Application.WindowState=Et.EtXlWindowState.xlMaximized;
+    wps.Application.Visible = true;
     wps.CreateTaskPane("https://zhibiao.uicp.fun/", "表格助手").Visible = true;
     return true;
 }
-window.onload=()=>{
-    alert("Window");
-}
+
+
+
+
+
 function openBook(obj: string) {
     //wps.PluginStorage.getItem()
 
@@ -57,4 +59,55 @@ function GetImage(control: any) {
             ;
     }
     return "./images/newFromTemp.svg";
+}
+function onWorkbookOpen(wb: object) {
+
+}
+/**
+ * 
+ * @param wb 
+ */
+function onWorkbookBeforeClose(wb: object) {
+
+}
+/**
+ * 
+ */
+function onWindowDeactivate(b: object, win: object) {
+
+}
+
+/**
+ * 当窗口激活时显示工作簿对应的操作窗格
+ * @param wb
+ * @param win
+ * @returns
+ */
+function onWindowActivate(wb: object, win: object) {
+    taskPanes.forEach(element => {
+
+        
+    });
+    
+    
+    //for (var _i = 0, taskPanes_2 = taskPanes; _i < taskPanes_2.length; _i++) {
+
+
+        //    var taskPane = taskPanes_2[_i];
+        //    if (taskPane.Name == name) {
+        //        (wps.ActiveTaskPane = wps.GetTaskPane(taskPane.ID)).Visible = true;
+        //        return;
+        //    }
+    //}
+}
+
+/**
+ * 
+ */
+window.onload = () => {
+    if (wps.Application) wps.Application = wps.EtApplication();
+    wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
+    wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
+    wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
+    wps.ApiEvent.AddApiEventListener("WorkbookOpen", onWorkbookOpen);
 }
