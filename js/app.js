@@ -84,6 +84,7 @@ window.onload = () => {
         tp1.Visible = true;
     }
     else {
+        alert("GOOD");
         for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
             var wb1 = wps.Application.Workbooks.Item(i);
             var obj = wb1.CustomDocumentProperties;
