@@ -65,7 +65,9 @@ function onWorkbookOpen(wb: object) {
  * @param wb 
  */
 function onWorkbookBeforeClose(wb: object) {
-
+    taskPanes.forEach(element => {
+        if((wb as Et.EtWorkbook).FullName==element.wb.FullName) element.tp.Delete();
+   });
 }
 /**
  * 当窗口不活动时隐藏工作簿对应的操作窗格
