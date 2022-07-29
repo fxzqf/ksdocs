@@ -105,7 +105,9 @@ function onWindowActivate(wb: object, win: object) {
  * 
  */
 window.onload = () => {
+    
     if (wps.Application) wps.Application = wps.EtApplication();
+    alert(wps.Application.Workbooks.Count);
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
     wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
     wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
