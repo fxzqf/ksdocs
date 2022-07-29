@@ -58,8 +58,14 @@ function GetImage(control: any) {
     return "./images/newFromTemp.svg";
 }
 function onWorkbookOpen(wb1: Et.EtWorkbook) {
-    let tp1 = bookPane(wb1);
-    if (tp1) tp1.Visible;
+    var obj = wb1.CustomDocumentProperties;
+    for (var x = obj.Count; x > 0; x--) {
+        if (obj.Item(x).Name == "TaskPane") {
+            var tp1 = wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手");
+            taskPanes.push({ wb: wb1, tp: tp1 });
+            if (wb1.FullName == wps.Application.ActiveWorkbook.FullName) tp1.Visible = true;  
+        }
+    }
 }
 /**
  * 
@@ -109,22 +115,12 @@ window.onload = () => {
         tp1.Visible = true;
     }
     else {
-        for (let i = 1; i <= wps.Application.Workbooks.Count; i++)
-            bookPane(wps.Application.Workbooks.Item(i));
+        for (let i = 1; i <= wps.Application.Workbooks.Count; i++) {
+            onWorkbookOpen(wps.Application.Workbooks.Item(i));
+        }
     }
     wps.ApiEvent.AddApiEventListener("WindowActivate", onWindowActivate);
     wps.ApiEvent.AddApiEventListener("WindowDeactivate", onWindowDeactivate);
     wps.ApiEvent.AddApiEventListener("WorkbookBeforeClose", onWorkbookBeforeClose);
     wps.ApiEvent.AddApiEventListener("WorkbookOpen", onWorkbookOpen);
-}
-function bookPane(wb1: Et.EtWorkbook): wps.CustomTaskpane | null {
-    var obj = wb1.CustomDocumentProperties;
-    for (var x = obj.Count; x > 0; x--) {
-        if (obj.Item(x).Name == "TaskPane") {
-            var tp1 = wps.CreateTaskPane("https://fxzqf.github.io/" + obj.Item(x).Value, "表格助手");
-            taskPanes.push({ wb: wb1, tp: tp1 });
-            return tp1;
-         }
-    }
-    return null;
 }
